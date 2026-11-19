@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English with Tony</title>
+<meta name="description" content="Inglés avanzado (C1) adaptado al TOEFL ITP: gramática, vocabulario y lectura con ejercicios autocorregibles y explicaciones en español.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: un campus universitario cálido y riguroso; el profesor que explica en español y practica en inglés.
+IDEA: la "course reader" de una universidad: bandas carmesí de facultad, fotos de campus del mundo anglosajón.
+PICTURE: foto grande de un lugar emblemático por tema; si no carga, un panel carmesí con arcos de claustro.
+COLOUR and TYPE: carmesí #9b1c31 dominante, blanco, tinta casi negra, acento azul #1f5fbf; Newsreader + Public Sans.
+LAYOUT: barra superior carmesí, héroe a todo lo ancho, tarjetas de temas; en cada tema 4 pasos en orden.
+*/
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#141215);--paper:light-dark(#f6f3f1,#1e1a1e);--ink:light-dark(#1b1a1e,#f1ecee);--mute:light-dark(#5d5862,#b7aeb5);
+--line:light-dark(#e4dedc,#3a333a);--crim:#9b1c31;--crim-d:light-dark(#7a1426,#c8475c);--crim-soft:light-dark(#f8e9ec,#2c1a1f);
+--blue:light-dark(#1f5fbf,#8db6ff);--ok:light-dark(#11714a,#5fd39d);--ok-soft:light-dark(#e5f5ed,#16291f);--bad:light-dark(#b3261e,#ff8a80);--bad-soft:light-dark(#fdeceb,#2e1817)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:120px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Public Sans",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;line-height:1.1;text-wrap:balance;margin:0 0 .5em}
+h1{font-size:clamp(34px,5vw,54px);font-weight:700}h2{font-size:clamp(26px,3.2vw,36px);font-weight:700}h3{font-size:22px;font-weight:700;margin-top:1.4em}
+a{color:var(--blue)}button{font:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(4vw,16px)}
+.band{padding-block:clamp(32px,5vw,64px)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* header */
+.top{background:var(--crim);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 1px 0 rgba(0,0,0,.15)}
+.top .wrap{display:flex;align-items:center;gap:16px 28px;flex-wrap:wrap;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-family:Newsreader,serif;font-size:24px;font-weight:700;letter-spacing:.2px}
+.brand svg{flex:none}
+.nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.nav a{color:#fff;text-decoration:none;padding:9px 12px;border-radius:8px;font-weight:600;font-size:15px;min-height:44px;display:flex;align-items:center}
+.nav a:hover{background:rgba(255,255,255,.12)}.nav a[aria-current=page]{background:#fff;color:var(--crim)}
+
+/* figures with fallback */
+.ph{position:relative;overflow:hidden;background:var(--crim);margin:0}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph .fb{display:none;position:absolute;inset:0;color:#fff;align-items:flex-end;padding:18px}
+.ph .fb svg{position:absolute;inset:0;width:100%;height:100%}
+.ph .fb b{position:relative;font-family:Newsreader,serif;font-size:clamp(20px,3vw,30px);line-height:1.1}
+.ph.noimg img{display:none}.ph.noimg .fb{display:flex}
+
+/* hero */
+.hero{position:relative;color:#fff}
+.hero .ph{height:min(72vh,600px);min-height:420px}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(64,8,20,.92) 0%,rgba(64,8,20,.72) 42%,rgba(64,8,20,.05) 78%)}
+.hero .copy{position:absolute;inset:0;display:flex;align-items:center}
+.hero .copy>.wrap{width:100%}.hero .inner{max-width:620px}.hero .fb b{display:none}
+.hero p.lead{font-size:19px;max-width:52ch;margin:0 0 24px;color:#fbeef0}
+.kicker{display:inline-block;background:#fff;color:var(--crim);font-weight:700;font-size:14px;padding:4px 10px;border-radius:99px;margin-bottom:16px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 20px;border-radius:10px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font-size:16px}
+.btn.solid{background:#fff;color:var(--crim)}.btn.ghost{border-color:#fff;color:#fff;background:transparent}
+.btn.crim{background:var(--crim);color:#fff}.btn.line{border-color:var(--line);color:var(--ink);background:var(--bg)}
+.credit{position:absolute;right:10px;bottom:8px;font-size:12px;color:#fff;opacity:.85;text-shadow:0 1px 2px #000}
+.credit a{color:#fff}
+
+/* steps strip */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper)}
+.steps div{padding:20px;border-right:1px solid var(--line)}.steps div:last-child{border:0}
+.steps i{font-style:normal;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--crim);color:#fff;font-weight:700;margin-bottom:8px}
+.steps b{display:block;font-size:17px}.steps span{color:var(--mute);font-size:15px}
+
+/* topic cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:22px}
+.card{display:flex;flex-direction:column;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg);transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.card .ph{aspect-ratio:16/10}
+.card .fb b{font-size:22px}.blk{font-size:24px;margin:28px 0 14px}.blk span{display:block;font:600 15px "Public Sans",sans-serif;color:var(--mute);margin-top:4px}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px;margin:0 0 18px}.mode{text-align:left;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:14px 16px;cursor:pointer;min-height:44px;font-size:15px}.mode b{display:block;font-size:17px;margin-bottom:2px}.mode.on{border-color:var(--crim);background:var(--crim-soft)}.mockread{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:28px;align-items:start;margin-bottom:32px}@media(max-width:900px){.mockread{grid-template-columns:minmax(0,1fr)}}.result{scroll-margin-top:100px}
+.card .num{position:absolute;left:12px;top:12px;background:var(--crim);color:#fff;font-weight:700;border-radius:8px;padding:2px 10px;font-size:15px}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card h3{margin:0;font-size:22px}.card .en{color:var(--mute);font-style:italic;font-size:15px}
+.card .where{font-size:14px;color:var(--crim-d);font-weight:600;margin-top:auto;padding-top:8px}
+.meter{height:6px;border-radius:9px;background:var(--line);overflow:hidden;margin-top:8px}.meter i{display:block;height:100%;background:var(--ok);width:0}
+
+/* topic page */
+.banner .ph{height:clamp(220px,38vw,400px)}
+.banner{position:relative}
+.thead{padding-top:28px}
+.thead .en{font-family:Newsreader,serif;font-style:italic;font-size:22px;color:var(--mute);margin:-6px 0 10px}
+.thead .meta{display:flex;flex-wrap:wrap;gap:8px 16px;color:var(--mute);font-size:15px}
+.chips{position:sticky;top:64px;z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin-top:20px}
+.chips .wrap{display:flex;gap:8px;overflow-x:auto;padding-block:10px}
+.chips button{flex:none;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:99px;padding:8px 16px;min-height:44px;cursor:pointer;font-weight:600;font-size:15px;white-space:nowrap}
+.chips button.on{background:var(--crim);border-color:var(--crim);color:#fff}
+.sec{padding:36px 0 10px;border-bottom:1px solid var(--line)}
+.sec>h2 small{display:block;font-family:"Public Sans",sans-serif;font-size:14px;color:var(--crim-d);font-weight:700;margin-bottom:6px}
+.expl{max-width:76ch}
+.expl ul{padding-left:1.2em}.expl li{margin:.25em 0}
+.ex{background:var(--paper);border-left:4px solid var(--crim);border-radius:0 10px 10px 0;padding:10px 16px;margin:12px 0}
+.ex p{margin:.35em 0}.ex span{color:var(--mute);font-size:14.5px}
+.tip{background:var(--crim-soft);border-radius:12px;padding:14px 18px;margin:22px 0 8px}
+.sechead{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-bottom:12px}
+.score{font-weight:700;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:15px}
+.reset{background:none;border:0;color:var(--blue);text-decoration:underline;cursor:pointer;min-height:44px;font-size:15px}
+
+/* items */
+.items{display:grid;gap:18px;max-width:860px}
+.item{border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;background:var(--bg)}
+.item .lab{display:flex;gap:8px;align-items:center;font-size:13.5px;color:var(--mute);font-weight:600;margin-bottom:6px}
+.item .lab b{background:var(--crim-soft);color:var(--crim-d);padding:2px 8px;border-radius:6px}
+.item .q{font-size:17.5px;margin:0 0 12px}
+.blank{display:inline-block;min-width:70px;border-bottom:2px solid var(--ink);margin:0 3px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;min-height:46px;padding:10px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);cursor:pointer;font-size:16px}
+.opt:hover:not(:disabled){border-color:var(--blue)}
+.opt .l{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:1px solid var(--line);font-weight:700;font-size:14px}
+.opt.sel{border-color:var(--blue);background:light-dark(#eaf1fc,#1a2335)}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt:disabled{cursor:default}
+.we{font-size:18px;line-height:2.3;margin:0 0 8px}
+.seg{display:inline;border:0;background:none;padding:2px 2px;color:var(--ink);cursor:pointer;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;font-size:inherit;border-radius:6px;position:relative}
+.seg sub{font-size:12px;font-weight:700;color:var(--crim-d);margin-left:2px;vertical-align:-6px}
+.seg:hover:not(:disabled){background:light-dark(#eaf1fc,#1a2335)}
+.seg.ok{background:var(--ok-soft);text-decoration-color:var(--ok)}.seg.bad{background:var(--bad-soft);text-decoration-color:var(--bad)}.seg.sel{background:light-dark(#eaf1fc,#1a2335)}
+.seg:disabled{cursor:default}
+.hint{font-size:14px;color:var(--mute);margin:0 0 4px}
+.fbk{margin-top:12px;border-radius:10px;padding:12px 14px;font-size:15.5px}
+.fbk.ok{background:var(--ok-soft)}.fbk.bad{background:var(--bad-soft)}
+.fbk p{margin:.25em 0}.fbk strong.g{color:var(--ok)}.fbk strong.r{color:var(--bad)}
+.fbk details{margin-top:8px}.fbk summary{cursor:pointer;color:var(--blue);font-weight:600;min-height:32px}
+.fbk ul{margin:.4em 0;padding-left:1.1em}
+
+/* glossary */
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:8px;margin:0 0 22px;padding:0;list-style:none;max-width:980px}
+.gloss li{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--paper)}
+.gloss b{display:block}.gloss span{color:var(--mute);font-size:14.5px}
+
+/* reading */
+.reading{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:28px;align-items:start}
+.passage{background:var(--paper);border-radius:14px;padding:22px 24px 22px 50px;position:sticky;top:130px;max-height:calc(100vh - 150px);overflow:auto}
+.passage h3{margin-top:0}
+.passage p{position:relative;margin:0 0 1em;font-family:Newsreader,Georgia,serif;font-size:18.5px;line-height:1.6}
+.passage p::before{content:attr(data-n);position:absolute;left:-30px;top:2px;font:700 13px "Public Sans",sans-serif;color:var(--crim-d)}
+.reading .items{max-width:none}
+
+.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:28px 0 48px}
+
+/* mock test */
+.mockbar{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;background:var(--paper);border-radius:14px;padding:14px 18px;margin:0 0 20px;position:sticky;top:64px;z-index:5}
+.mockbar .t{font-variant-numeric:tabular-nums;font-weight:700}
+.result{border:2px solid var(--crim);border-radius:16px;padding:22px;margin:0 0 24px;background:var(--bg)}
+.big{font-family:Newsreader,serif;font-size:clamp(44px,7vw,72px);font-weight:700;line-height:1;color:var(--crim-d)}
+.rows{display:grid;gap:6px;margin-top:14px}
+.rows div{display:grid;grid-template-columns:minmax(0,1fr) 120px 60px;gap:10px;align-items:center;font-size:15px}
+.rows .bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden}.rows .bar i{display:block;height:100%;background:var(--crim)}
+.rows span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+
+/* tables */
+table{border-collapse:collapse;width:100%;max-width:860px;margin:10px 0 18px}
+th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+th{font-size:14px;color:var(--mute)}td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.credits td{font-size:15px}
+
+footer{background:var(--crim);color:#fbeef0;padding:32px 0;font-size:14.5px;margin-top:20px}
+footer a{color:#fff}footer p{margin:.3em 0;max-width:90ch}
+
+@media(max-width:900px){.reading{grid-template-columns:minmax(0,1fr)}.passage{position:static;max-height:none}}
+@media(max-width:700px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.steps div:nth-child(2){border-right:0}.steps div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+.hero .shade{background:linear-gradient(0deg,rgba(64,8,20,.95) 0%,rgba(64,8,20,.75) 55%,rgba(64,8,20,.15) 100%)}.hero .copy{align-items:flex-end;padding-bottom:28px}
+.top{position:static}.hero .credit{display:none}.nav{margin-left:0;width:100%}.nav a{padding:8px 10px;font-size:14px}.chips{top:0}.mockbar{top:0}html{scroll-padding-top:80px}
+.passage{padding:18px 18px 18px 40px}.mockbar{gap:6px 12px;padding:8px 12px;font-size:14px}.mockbar .btn{min-height:40px;padding:6px 12px;font-size:14px}.mockbar>span:last-child{margin-left:0!important;width:100%}.rows div{grid-template-columns:minmax(0,1fr) 70px 52px}}
+@media(max-width:600px){table{font-size:13px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--mute)}.stack td:empty{display:none}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="#inicio" aria-label="English with Tony, inicio">
+<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 3 3 10l14 7 14-7z" fill="#fff"/><path d="M8 13v7c0 3 4 5 9 5s9-2 9-5v-7l-9 4.5z" fill="#fff" opacity=".85"/><path d="M29 11v9" stroke="#fff" stroke-width="2"/><circle cx="29" cy="21" r="1.8" fill="#fff"/></svg>
+English with Tony</a>
+<nav class="nav" aria-label="Principal">
+<a href="#inicio" data-r="inicio">Inicio</a><a href="#temas" data-r="temas">Temas</a><a href="#simulacro" data-r="simulacro">Simulacro</a><a href="#toefl" data-r="toefl">TOEFL ITP</a><a href="#creditos" data-r="creditos">Créditos</a>
+</nav></div></header>
+<main id="main"><div class="wrap band"><p>Cargando…</p></div></main>
+<footer><div class="wrap">
+<p><b>English with Tony</b> · Inglés avanzado (nivel C1) adaptado al TOEFL ITP. Sitio gratuito con fines educativos.</p>
+<p>Todo el contenido (explicaciones, ejercicios y lecturas) es original. TOEFL y TOEFL ITP son marcas registradas de ETS; este sitio no está afiliado ni avalado por ETS ni por ninguna institución examinadora.</p>
+<p>Fotografías de Wikimedia Commons con licencias libres. Consulta autores y licencias en <a href="#creditos">Créditos</a>.</p>
+</div></footer>
+<script>/*TEMAS*/</script>
+<script>
+{
+/* ===== Configuración del contador de visitas (GoatCounter) =====
+   Escribe aquí tu código de GoatCounter, por ejemplo "englishwithtony".
+   Si se deja vacío, no se carga ningún contador. */
+const GOATCOUNTER_CODE = "";
+
+const T = window.TEMAS;
+const HERO = {file:"Radcliffe_Camera,_Oxford.jpg", place:"Radcliffe Camera, University of Oxford", country:"Inglaterra, Reino Unido", author:"Mike Peel (CC BY-SA 4.0)"};
+const MOCK_IMG = {file:"Statue_of_Liberty,_NY.jpg", place:"Statue of Liberty, Nueva York", country:"Estados Unidos", author:"Wikimedia Commons"};
+const main = document.getElementById("main");
+const LET = ["A","B","C","D"];
+const KIND = {s:"Structure", w:"Written Expression", v:"Vocabulario", r:"Lectura"};
+
+/* ---------- utilidades ---------- */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const imgURL = (f,w) => "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(f) + "?width=" + w;
+const pageURL = f => "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(f);
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const arches = () => `<svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b52a41"/><stop offset="1" stop-color="#6e1022"/></linearGradient><pattern id="pA" width="80" height="120" patternUnits="userSpaceOnUse"><path d="M8 120V50a32 32 0 0 1 64 0v70" fill="none" stroke="#fff" stroke-opacity=".13" stroke-width="3"/><path d="M20 120V56a20 20 0 0 1 40 0v64" fill="#000" fill-opacity=".08"/></pattern></defs><rect width="400" height="250" fill="url(#gA)"/><rect width="400" height="250" fill="url(#pA)"/></svg>`;
+function fig(file, alt, w, extra){
+  return `<figure class="ph" ${extra||""}><img src="${imgURL(file,w)}" alt="${esc(alt)}" loading="lazy" decoding="async"><div class="fb">${arches()}<b>${esc(alt)}</b></div></figure>`;
+}
+/* si una foto no carga (sin conexión o vista previa restringida) se muestra el panel ilustrado */
+document.addEventListener("error", e => { const t = e.target; if (t.tagName === "IMG") t.closest(".ph")?.classList.add("noimg"); }, true);
+
+/* ---------- progreso (solo en este navegador) ---------- */
+const store = {
+  get(){ try { return JSON.parse(localStorage.getItem("ewt-progress") || "{}"); } catch(e){ return {}; } },
+  set(k,v){ try { const s = this.get(); s[k] = v; localStorage.setItem("ewt-progress", JSON.stringify(s)); } catch(e){} }
+};
+function topicPct(id){ const s = store.get(); let done = 0, tot = 0;
+  for (const k of ["g","v","r"]) { const t = T[id-1]; const n = k==="g"?t.gq.length:k==="v"?t.vq.length:t.reading.q.length; tot += n; done += (s[id+"-"+k]?.answered||0); }
+  return Math.round(100*done/tot); }
+
+/* ---------- ejercicios ---------- */
+let RENDERED = {};  // id de grupo -> items preparados
+function prep(it){
+  if (it.k === "w") return {...it};
+  const order = shuffle([0,1,2,3]);
+  return {...it, o: order.map(i => it.o[i]), f: order.map(i => it.f[i]), a: order.indexOf(it.a)};
+}
+function qText(it){ return esc(it.q).replace(/___/g, '<span class="blank" aria-label="espacio en blanco"></span>'); }
+function itemHTML(it, gid, i, num){
+  const head = `<div class="lab"><b>${KIND[it.k]}</b><span>Pregunta ${num}</span></div>`;
+  if (it.k === "w") {
+    let n = 0;
+    const s = esc(it.q).replace(/\[\[(.+?)\]\]/g, (m, p) => { const j = n++; return `<button class="seg" data-g="${gid}" data-i="${i}" data-c="${j}">${p}<sub>${LET[j]}</sub></button>`; });
+    return `<div class="item" id="${gid}-${i}">${head}<p class="hint">Elige la parte subrayada que es incorrecta.</p><p class="we">${s}</p><div class="out"></div></div>`;
+  }
+  const opts = it.o.map((o,j) => `<button class="opt" data-g="${gid}" data-i="${i}" data-c="${j}"><span class="l">${LET[j]}</span><span>${esc(o)}</span></button>`).join("");
+  return `<div class="item" id="${gid}-${i}">${head}<p class="q">${qText(it)}</p><div class="opts">${opts}</div><div class="out"></div></div>`;
+}
+function feedbackHTML(it, c){
+  const right = c === it.a;
+  const optName = j => it.k === "w" ? `${LET[j]} (“${esc(it.q.match(/\[\[(.+?)\]\]/g)[j].slice(2,-2))}”)` : `${LET[j]} (“${esc(it.o[j])}”)`;
+  let h = right
+    ? `<p><strong class="g">✓ ¡Correcto!</strong> ${esc(it.f[c])}</p>`
+    : `<p><strong class="r">✗ Tu respuesta: ${optName(c)}.</strong> ${esc(it.f[c])}</p><p><strong class="g">✓ Respuesta correcta: ${optName(it.a)}.</strong> ${esc(it.f[it.a])}</p>`;
+  const others = [0,1,2,3].filter(j => j !== c && j !== it.a);
+  if (others.length) h += `<details><summary>${it.k==="w"?"Ver las demás partes":"Por qué las demás opciones no funcionan"}</summary><ul>${others.map(j => `<li><b>${optName(j)}:</b> ${esc(it.f[j])}</li>`).join("")}</ul></details>`;
+  return `<div class="fbk ${right?"ok":"bad"}" role="status">${h}</div>`;
+}
+function group(gid, items, opts={}){
+  const g = RENDERED[gid] = {items: items.map(prep), ans: {}, exam: !!opts.exam, start: opts.start||1, key: opts.key};
+  return `<div class="items" id="${gid}">${g.items.map((it,i) => itemHTML(it, gid, i, g.start+i)).join("")}</div>`;
+}
+function answer(gid, i, c){
+  const g = RENDERED[gid]; if (!g || g.ans[i] !== undefined && !g.exam) return;
+  const it = g.items[i]; const box = document.getElementById(gid+"-"+i);
+  if (g.exam) { g.ans[i] = c; box.querySelectorAll("[data-c]").forEach(b => b.classList.toggle("sel", +b.dataset.c === c)); updateMock(); return; }
+  g.ans[i] = c; reveal(gid, i);
+  updateScore(gid);
+}
+function reveal(gid, i){
+  const g = RENDERED[gid], it = g.items[i], c = g.ans[i], box = document.getElementById(gid+"-"+i);
+  box.querySelectorAll("[data-c]").forEach(b => { const j = +b.dataset.c; b.disabled = true; b.classList.remove("sel");
+    if (j === it.a) b.classList.add("ok"); else if (j === c) b.classList.add("bad"); });
+  box.querySelector(".out").innerHTML = c === undefined
+    ? `<div class="fbk bad"><p><strong class="r">Sin responder.</strong> Respuesta correcta: ${LET[it.a]}. ${esc(it.f[it.a])}</p></div>`
+    : feedbackHTML(it, c);
+}
+function updateScore(gid){
+  const g = RENDERED[gid]; const el = document.querySelector(`[data-score="${gid}"]`);
+  const answered = Object.keys(g.ans).length, ok = Object.entries(g.ans).filter(([i,c]) => g.items[i].a === c).length;
+  if (el) el.textContent = `${ok} de ${answered} correctas · ${g.items.length - answered} por responder`;
+  if (g.key) store.set(g.key, {answered, ok, total: g.items.length});
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-g][data-c]"); if (b && !b.disabled) { answer(b.dataset.g, +b.dataset.i, +b.dataset.c); return; }
+  const r = e.target.closest("[data-reset]"); if (r) { resetGroup(r.dataset.reset); return; }
+  const ch = e.target.closest("[data-jump]"); if (ch) { document.getElementById(ch.dataset.jump)?.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); return; }
+  if (e.target.closest("[data-mock-new]")) { renderMock(); return; }
+  if (e.target.closest("[data-mock-end]")) { finishMock(false); return; }
+  const md = e.target.closest("[data-mode]"); if (md) { mockMode = md.dataset.mode; renderMock(); return; }
+});
+function resetGroup(gid){
+  const g = RENDERED[gid]; const wrap = document.getElementById(gid);
+  const src = g.src; wrap.outerHTML = group(gid, src, {key: g.key, start: g.start}); RENDERED[gid].src = src; updateScore(gid);
+}
+function sectionGroup(gid, src, key, start){ const h = group(gid, src, {key, start}); RENDERED[gid].src = src; return h; }
+
+/* ---------- vistas ---------- */
+function stepsStrip(){
+  return `<div class="steps">
+  <div><i>1</i><b>Explicación</b><span>El tema en español, con ejemplos en inglés y las trampas típicas del examen.</span></div>
+  <div><i>2</i><b>Práctica de gramática</b><span>10 preguntas tipo Structure y Written Expression.</span></div>
+  <div><i>3</i><b>Vocabulario</b><span>Glosario y ejercicios de colocaciones, formación de palabras y phrasal verbs.</span></div>
+  <div><i>4</i><b>Lectura</b><span>Un texto académico original de unas 300 palabras con 10 preguntas tipo Reading Comprehension.</span></div></div>`;
+}
+function cards(from=1, to=T.length){
+  return `<div class="grid">${T.slice(from-1, to).map(t => `<a class="card" href="#tema-${t.id}">
+    <div style="position:relative">${fig(t.img, t.place, 960, 'style="aspect-ratio:16/10"')}<span class="num">Tema ${t.id}</span></div>
+    <div class="body"><h3>${esc(t.title)}</h3><span class="en">${esc(t.en)}</span><span>${esc(t.theme)}</span>
+    <span class="where">${esc(t.place)} · ${esc(t.country)}</span>
+    <div class="meter" title="Avance"><i style="width:${topicPct(t.id)}%"></i></div></div></a>`).join("")}</div>`;
+}
+function blocks(){
+  return `<h3 class="blk">Bloque 1 · Temas 1 a 10 <span>Estructuras verbales y oraciones complejas</span></h3>${cards(1,10)}
+  <h3 class="blk">Bloque 2 · Temas 11 a 20 <span>Precisión gramatical, vocabulario y estructura de la oración</span></h3>${cards(11,20)}`;
+}
+function viewHome(){
+  return `<section class="hero">${fig(HERO.file, HERO.place, 1920)}<div class="shade"></div>
+  <div class="copy"><div class="wrap"><div class="inner">
+  <span class="kicker">Gratis · Nivel C1 · Enfoque TOEFL ITP</span>
+  <h1>Inglés avanzado para presentar el TOEFL ITP con confianza</h1>
+  <p class="lead">Veinte temas de gramática, vocabulario y lectura académica, con más de 400 preguntas tipo TOEFL ITP. Cada respuesta se corrige al momento y te explica por qué es correcta o por qué no.</p>
+  <div class="btns"><a class="btn solid" href="#tema-1">Empezar con el Tema 1</a><a class="btn ghost" href="#simulacro">Hacer un simulacro</a></div>
+  </div></div></div>
+  <span class="credit">${esc(HERO.place)} · Foto: ${esc(HERO.author)}</span></section>
+  <section class="wrap band"><h2>Cómo funciona cada tema</h2>${stepsStrip()}</section>
+  <section class="wrap band" style="padding-top:0" id="lista"><h2>Los veinte temas</h2>
+  <p style="color:var(--mute);margin-top:-6px">Cada tema se ilustra con un lugar emblemático de un país de habla inglesa. Tu avance se guarda en este navegador.</p>${blocks()}</section>`;
+}
+function viewTemas(){
+  return `<section class="wrap band"><h1>Temas</h1><p style="max-width:70ch">Recorre los temas en orden o empieza por el que más se te dificulte. Cada uno sigue la misma secuencia de cuatro pasos.</p>${stepsStrip()}<div style="height:28px"></div>${blocks()}</section>`;
+}
+function viewTema(id){
+  const t = T[id-1]; if (!t) return viewHome();
+  const prev = T[id-2], next = T[id];
+  const nG = t.gq.length, nV = t.vq.length;
+  return `<section class="banner">${fig(t.img, t.place, 1920)}<span class="credit">${esc(t.place)} · Foto: <a href="${pageURL(t.img)}" target="_blank" rel="noopener">${esc(t.author)}</a></span></section>
+  <div class="wrap thead"><p style="margin:0 0 6px;color:var(--crim-d);font-weight:700">Tema ${t.id} de ${T.length} · ${esc(t.theme)}</p>
+  <h1>${esc(t.title)}</h1><p class="en">${esc(t.en)}</p><p style="max-width:70ch;margin:0">${esc(t.intro)}</p></div>
+  <nav class="chips" aria-label="Pasos del tema"><div class="wrap">
+  <button data-jump="s1">1 · Explicación</button><button data-jump="s2">2 · Práctica de gramática</button><button data-jump="s3">3 · Vocabulario</button><button data-jump="s4">4 · Lectura</button></div></nav>
+  <div class="wrap">
+  <section class="sec" id="s1"><h2><small>Paso 1</small>Explicación con ejemplos</h2><div class="expl">${t.grammar}</div></section>
+  <section class="sec" id="s2"><h2><small>Paso 2</small>Práctica de gramática</h2>
+   <div class="sechead"><span class="score" data-score="g${id}"></span><button class="reset" data-reset="g${id}">Reiniciar esta práctica</button></div>
+   <p class="hint" style="max-width:70ch">Las preguntas <b>Structure</b> piden completar la oración; las de <b>Written Expression</b> piden encontrar el error. Al responder verás la explicación.</p>
+   ${sectionGroup("g"+id, t.gq, id+"-g", 1)}</section>
+  <section class="sec" id="s3"><h2><small>Paso 3</small>Revisión de vocabulario</h2>
+   <ul class="gloss">${t.vocab.map(([w,m]) => `<li><b>${esc(w)}</b><span>${esc(m)}</span></li>`).join("")}</ul>
+   <div class="sechead"><span class="score" data-score="v${id}"></span><button class="reset" data-reset="v${id}">Reiniciar vocabulario</button></div>
+   ${sectionGroup("v"+id, t.vq, id+"-v", 1)}</section>
+  <section class="sec" id="s4"><h2><small>Paso 4</small>Lectura</h2>
+   <div class="sechead"><span class="score" data-score="r${id}"></span><button class="reset" data-reset="r${id}">Reiniciar lectura</button></div>
+   <div class="reading"><article class="passage"><h3>${esc(t.reading.title)}</h3>${t.reading.text.map((p,i) => `<p data-n="${i+1}">${esc(p)}</p>`).join("")}</article>
+   <div>${sectionGroup("r"+id, t.reading.q, id+"-r", 1)}</div></div></section>
+  <div class="pager">${prev ? `<a class="btn line" href="#tema-${prev.id}">← Tema ${prev.id}: ${esc(prev.title)}</a>` : `<span></span>`}
+  ${next ? `<a class="btn crim" href="#tema-${next.id}">Tema ${next.id}: ${esc(next.title)} →</a>` : `<a class="btn crim" href="#simulacro">Ir al simulacro →</a>`}</div></div>`;
+}
+
+/* ---------- simulacro ---------- */
+const MODES = {
+  corto:   {name:"Práctica corta", desc:"20 preguntas: 15 de gramática y 5 de vocabulario. Sin límite de tiempo.", limit:0},
+  seccion: {name:"Structure and Written Expression", desc:"40 preguntas como en el examen: 15 Structure y 25 Written Expression en 25 minutos.", limit:25*60},
+  lectura: {name:"Reading Comprehension", desc:"2 lecturas al azar con 10 preguntas cada una, en 22 minutos (el ritmo del examen real).", limit:22*60}
+};
+let mockTimer = null, mockStart = 0, mockDone = false, mockMode = "seccion", mockGroups = [];
+function pool(kind){ const out = []; T.forEach(t => { const src = kind==="v" ? t.vq : t.gq; src.forEach(it => { if (kind==="v" || it.k===kind) out.push({...it, tema:t.id}); }); }); return shuffle(out); }
+function renderMock(){
+  mockDone = false; clearInterval(mockTimer); mockGroups = [];
+  const area = document.getElementById("mockarea"); const m = MODES[mockMode];
+  document.querySelectorAll("[data-mode]").forEach(b => b.classList.toggle("on", b.dataset.mode === mockMode));
+  let html = "";
+  if (mockMode === "lectura") {
+    shuffle(T).slice(0,2).forEach((t,k) => {
+      const gid = "mockr"+k; const src = t.reading.q.map(it => ({...it, tema:t.id}));
+      html += `<h3 style="margin-top:8px">Lectura ${k+1} · preguntas ${k*10+1}–${k*10+10}</h3><div class="mockread"><article class="passage"><h3>${esc(t.reading.title)}</h3>${t.reading.text.map((p,i) => `<p data-n="${i+1}">${esc(p)}</p>`).join("")}</article><div>${group(gid, src, {exam:true, start:k*10+1})}</div></div>`;
+      mockGroups.push(gid);
+    });
+  } else {
+    let src;
+    if (mockMode === "seccion") {
+      src = pool("s").slice(0,15).concat(pool("w").slice(0,25));
+      html = `<p class="hint"><b>Structure:</b> preguntas 1 a 15 · <b>Written Expression:</b> preguntas 16 a 40.</p>`;
+    } else src = shuffle(pool("s").slice(0,7).concat(pool("w").slice(0,8), pool("v").slice(0,5)));
+    html += group("mock", src, {exam:true});
+    mockGroups.push("mock");
+  }
+  area.innerHTML = html;
+  document.getElementById("mockres").innerHTML = "";
+  document.getElementById("mockdesc").textContent = m.desc;
+  mockStart = Date.now(); mockTimer = setInterval(tick, 1000); tick(); updateMock();
+  document.getElementById("mockend").disabled = false;
+}
+function tick(){ const el = document.getElementById("mockt"); if (!el) { clearInterval(mockTimer); return; }
+  const lim = MODES[mockMode].limit, s = Math.floor((Date.now()-mockStart)/1000);
+  const shown = lim ? Math.max(0, lim - s) : s;
+  el.textContent = String(Math.floor(shown/60)).padStart(2,"0")+":"+String(shown%60).padStart(2,"0");
+  document.getElementById("mocktl").textContent = lim ? "Tiempo restante" : "Tiempo";
+  if (lim && s >= lim && !mockDone) finishMock(true); }
+function updateMock(){ const el = document.getElementById("mockn"); if (!el) return;
+  let a = 0, n = 0; mockGroups.forEach(g => { a += Object.keys(RENDERED[g].ans).length; n += RENDERED[g].items.length; });
+  el.textContent = `${a} de ${n} respondidas`; }
+function finishMock(timeUp){
+  if (mockDone || !mockGroups.length) return; mockDone = true; clearInterval(mockTimer);
+  let ok = 0, n = 0; const per = {}, byKind = {};
+  mockGroups.forEach(gid => { const g = RENDERED[gid];
+    g.items.forEach((it,i) => { reveal(gid, i); const right = g.ans[i] === it.a; n++; if (right) ok++;
+      const p = per[it.tema] ||= {ok:0,n:0}; p.n++; if (right) p.ok++;
+      const k = byKind[it.k] ||= {ok:0,n:0}; k.n++; if (right) k.ok++; }); });
+  const weak = Object.entries(per).filter(([k,p]) => p.ok < p.n).sort((a,b) => a[1].ok/a[1].n - b[1].ok/b[1].n);
+  const lim = MODES[mockMode].limit, used = Math.min(lim || 1e9, Math.floor((Date.now()-mockStart)/1000));
+  const time = String(Math.floor(used/60)).padStart(2,"0")+":"+String(used%60).padStart(2,"0");
+  const kinds = Object.entries(byKind).map(([k,v]) => `<div><span>${KIND[k]}</span><span class="bar"><i style="width:${100*v.ok/v.n}%"></i></span><span>${v.ok}/${v.n}</span></div>`).join("");
+  document.getElementById("mockres").innerHTML = `<div class="result" tabindex="-1" id="resbox">
+   <p style="margin:0;color:var(--mute);font-weight:600">${esc(MODES[mockMode].name)} · ${timeUp ? "se acabó el tiempo" : "tiempo usado " + time}</p>
+   <div class="big">${ok} / ${n}</div>
+   <p style="margin:.4em 0 0">${Math.round(100*ok/n)} % de aciertos. Es una práctica orientativa: la calificación oficial del TOEFL ITP usa una escala convertida (310 a 677) que no se puede calcular con un cuestionario de práctica.</p>
+   <h3 style="margin-top:18px">Por tipo de pregunta</h3><div class="rows">${kinds}</div>
+   ${weak.length ? `<h3 style="margin-top:18px">Temas para repasar</h3><div class="rows">${weak.slice(0,8).map(([k,p]) => `<div><a href="#tema-${k}">Tema ${k}: ${esc(T[k-1].title)}</a><span class="bar"><i style="width:${100*p.ok/p.n}%"></i></span><span>${p.ok}/${p.n}</span></div>`).join("")}</div>` : `<p><b>¡Sin errores!</b> Prueba otro simulacro: las preguntas cambian cada vez.</p>`}
+   <p style="margin-top:16px">Abajo puedes ver la explicación de cada pregunta.</p></div>`;
+  document.getElementById("mockend").disabled = true;
+  const rb = document.getElementById("resbox"); rb.scrollIntoView({block:"start"}); rb.focus({preventScroll:true});
+}
+function viewMock(){
+  return `<section class="banner">${fig(MOCK_IMG.file, MOCK_IMG.place, 1920)}<span class="credit">${esc(MOCK_IMG.place)} · Foto: <a href="${pageURL(MOCK_IMG.file)}" target="_blank" rel="noopener">${esc(MOCK_IMG.author)}</a></span></section>
+  <div class="wrap thead"><h1>Simulacro de práctica</h1>
+  <p style="max-width:72ch">Elige un formato. Las preguntas salen al azar de los 20 temas y, como en el examen real, <b>no verás las respuestas hasta terminar</b>. Con límite de tiempo, el simulacro se califica solo cuando el reloj llega a cero.</p>
+  <div class="modes">${Object.entries(MODES).map(([k,m]) => `<button class="mode" data-mode="${k}"><b>${m.name}</b>${m.desc}</button>`).join("")}</div></div>
+  <div class="wrap" style="padding-bottom:40px">
+  <div class="mockbar"><span><span id="mocktl">Tiempo</span>: <span class="t" id="mockt">00:00</span></span><span id="mockn"></span>
+   <span style="margin-left:auto;display:flex;gap:10px;flex-wrap:wrap"><button class="btn line" data-mock-new>Nuevo simulacro</button><button class="btn crim" id="mockend" data-mock-end>Terminar y revisar</button></span></div>
+  <p class="hint" id="mockdesc"></p>
+  <div id="mockres"></div><div id="mockarea"></div></div>`;
+}
+
+/* ---------- TOEFL ITP ---------- */
+function viewToefl(){
+  return `<section class="wrap band"><h1>¿Qué es el TOEFL ITP?</h1>
+  <div class="expl"><p>El TOEFL ITP es un examen institucional de opción múltiple que muchas universidades usan para certificar, ubicar o dar seguimiento al nivel de inglés. El <b>Nivel 1</b> (intermedio a avanzado) dura unos 115 minutos, tiene 140 preguntas con cuatro opciones cada una y se califica de <b>310 a 677</b>. Cada institución decide qué puntaje exige.</p></div>
+  <table class="stack"><thead><tr><th>Sección</th><th>Qué evalúa</th><th class="n">Preguntas</th><th class="n">Tiempo aprox.</th><th>Dónde practicarla aquí</th></tr></thead><tbody>
+  <tr><td>Listening Comprehension</td><td>Conversaciones cortas, diálogos largos y charlas académicas.</td><td class="n">50</td><td class="n">35 min</td><td>Este sitio no incluye audio. Complementa con podcasts académicos y conferencias universitarias abiertas.</td></tr>
+  <tr><td>Structure and Written Expression</td><td>Completar oraciones (Structure) e identificar el error (Written Expression).</td><td class="n">40</td><td class="n">25 min</td><td>Paso 2 de cada tema (10 preguntas) y el simulacro de 40 preguntas en 25 minutos.</td></tr>
+  <tr><td>Reading Comprehension</td><td>Textos académicos: idea principal, detalles, vocabulario en contexto, referencias e inferencias.</td><td class="n">50</td><td class="n">55 min</td><td>Paso 4 de cada tema (lecturas de unas 300 palabras con 10 preguntas) y el simulacro de Reading.</td></tr>
+  </tbody></table>
+  <h2 style="margin-top:28px">Estrategias que se practican en el sitio</h2>
+  <div class="expl"><ul>
+  <li><b>Structure:</b> antes de mirar las opciones, identifica qué le falta a la oración (¿sujeto?, ¿verbo conjugado?, ¿conector?). Muchas opciones incorrectas crean dos verbos o ninguno.</li>
+  <li><b>Written Expression:</b> revisa en este orden: concordancia sujeto-verbo, forma del verbo después de modales o auxiliares, -ing o infinitivo, paralelismo, preposiciones y pronombres.</li>
+  <li><b>Reading:</b> lee primero la pregunta y localiza el párrafo. En "closest in meaning" sustituye cada opción en la oración. En "NOT mentioned" tacha las tres que sí aparecen.</li>
+  <li><b>Tiempo:</b> no dejes preguntas en blanco; en el TOEFL ITP los errores no restan puntos.</li></ul></div></section>`;
+}
+
+/* ---------- créditos ---------- */
+function viewCredits(){
+  const rows = [HERO, ...T.map(t => ({file:t.img, place:t.place, country:t.country, author:t.author, tema:t.id})), MOCK_IMG];
+  return `<section class="wrap band"><h1>Créditos y aviso</h1>
+  <div class="expl"><p>Las explicaciones, ejercicios y lecturas de este sitio son material original con fines educativos. Los temas siguen la progresión habitual de un curso de inglés de nivel C1 y se adaptaron al formato del TOEFL ITP.</p>
+  <p>Las fotografías se cargan directamente desde <b>Wikimedia Commons</b>, el archivo de medios libres de la Fundación Wikimedia. Cada imagen conserva su licencia (Creative Commons o dominio público); el enlace de cada fila lleva a su ficha, donde están el autor y los términos de reutilización.</p></div>
+  <table class="stack credits"><thead><tr><th>Lugar</th><th>País</th><th>Se usa en</th><th>Autor / licencia</th></tr></thead><tbody>
+  ${rows.map(r => `<tr><td>${esc(r.place)}</td><td>${esc(r.country)}</td><td>${r.tema ? "Tema "+r.tema : r === HERO ? "Inicio" : "Simulacro"}</td><td><a href="${pageURL(r.file)}" target="_blank" rel="noopener">${esc(r.author)}</a></td></tr>`).join("")}
+  </tbody></table>
+  <p style="color:var(--mute)">TOEFL y TOEFL ITP son marcas registradas de ETS. Este sitio no está afiliado ni avalado por ETS ni por ninguna editorial o institución examinadora.</p></section>`;
+}
+
+/* ---------- router ---------- */
+function route(){
+  const h = (location.hash || "#inicio").slice(1);
+  RENDERED = {}; clearInterval(mockTimer);
+  let html, nav = h, title = "English with Tony";
+  const m = h.match(/^tema-(\d+)$/);
+  if (m && T[+m[1]-1]) { html = viewTema(+m[1]); nav = "temas"; title = `Tema ${m[1]}: ${T[+m[1]-1].title} · English with Tony`; }
+  else if (h === "temas") { html = viewTemas(); title = "Temas · English with Tony"; }
+  else if (h === "simulacro") { html = viewMock(); title = "Simulacro · English with Tony"; }
+  else if (h === "toefl") { html = viewToefl(); title = "TOEFL ITP · English with Tony"; }
+  else if (h === "creditos") { html = viewCredits(); title = "Créditos · English with Tony"; }
+  else { html = viewHome(); nav = "inicio"; }
+  main.innerHTML = html; document.title = title;
+  document.querySelectorAll(".nav a").forEach(a => { if (a.dataset.r === nav) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+  Object.keys(RENDERED).forEach(updateScore);
+  if (h === "simulacro") renderMock();
+  window.scrollTo(0,0);
+  /* resaltar el paso visible en la barra de pasos */
+  if (m) { const chips = [...document.querySelectorAll(".chips button")];
+    const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) chips.forEach(c => c.classList.toggle("on", c.dataset.jump === en.target.id)); }), {rootMargin:"-40% 0px -55% 0px"});
+    ["s1","s2","s3","s4"].forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); }); }
+  if (window.goatcounter && window.goatcounter.count) { try { window.goatcounter.count({path: location.pathname + location.hash, title}); } catch(e){} }
+}
+window.addEventListener("hashchange", route);
+route();
+
+/* ---------- contador de visitas ---------- */
+if (GOATCOUNTER_CODE) {
+  window.goatcounter = {no_onload: true};
+  const s = document.createElement("script"); s.async = true; s.src = "https://gc.zgo.at/count.js";
+  s.dataset.goatcounter = "https://" + GOATCOUNTER_CODE + ".goatcounter.com/count";
+  s.onload = () => { try { window.goatcounter.count({path: location.pathname + location.hash, title: document.title}); } catch(e){} };
+  document.head.appendChild(s);
+}
+}
+</script>
+</body>
+</html>
